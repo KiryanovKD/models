@@ -77,15 +77,15 @@ class Postprocessor(object):
 
     # Quantize by:
     # - clipping to [min, max] range
-    clipped_embeddings = np.clip(
-        pca_applied, vggish_params.QUANTIZE_MIN_VAL,
-        vggish_params.QUANTIZE_MAX_VAL)
+    #clipped_embeddings = np.clip(
+    #    pca_applied, vggish_params.QUANTIZE_MIN_VAL,
+    #    vggish_params.QUANTIZE_MAX_VAL)
     # - convert to 8-bit in range [0.0, 255.0]
-    quantized_embeddings = (
-        (clipped_embeddings - vggish_params.QUANTIZE_MIN_VAL) *
-        (255.0 /
-         (vggish_params.QUANTIZE_MAX_VAL - vggish_params.QUANTIZE_MIN_VAL)))
+    #quantized_embeddings = (
+    #    (clipped_embeddings - vggish_params.QUANTIZE_MIN_VAL) *
+    #    (255.0 /
+    #     (vggish_params.QUANTIZE_MAX_VAL - vggish_params.QUANTIZE_MIN_VAL)))
     # - cast 8-bit float to uint8
-    quantized_embeddings = quantized_embeddings.astype(np.uint8)
+    #quantized_embeddings = quantized_embeddings.astype(np.uint8)
 
-    return quantized_embeddings
+    return pca_applied#quantized_embeddings
